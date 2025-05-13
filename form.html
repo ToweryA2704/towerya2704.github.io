@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--
+This page was made with Microsoft Copilot but improved by ChatGPT because microsoft copilot kept breaking my form!
+I asked for a basic Form
+it looked great but it needed working reset and work submit buttons
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Favorite AI Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f7fa;
+    }
+
+    nav {
+      text-align: center;
+      background-color: #8BC34A; /* Light green */
+      padding: 10px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    form {
+      background-color: #aaf0d1;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group,
+    .radio-section {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .radio-section label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .radio-section input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    textarea {
+      background-color: #e0f7fa;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    input[type="reset"] {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 10px;
+      background-color: #8BC34A; /* Light green */
+      color: #fff;
+    }
+
+    .footer a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        width: 90%;
+      }
+
+      input[type="submit"],
+      input[type="reset"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      let form = document.getElementById('myForm');
+      let formData = new FormData(form);
+
+      // Print form fields just for demonstration
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
+
+      alert("Form submitted!");
+    }
+
+    function handleReset() {
+      alert("Form reset!");
+    }
+
+    function validateForm() {
+      let firstName = document.getElementById('firstName').value;
+      let lastName = document.getElementById('lastName').value;
+      let options = document.getElementById('options').value;
+      let radioGroup = document.querySelector('input[name="radioGroup"]:checked');
+
+      if (!firstName || !lastName || !options || !radioGroup) {
+        alert("Please fill out all required fields.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="table.html">Table</a> |
+    <a href="form.html">Form</a> |
+    <a href="video.html">Video</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="favcity.html">Favorite City</a> |
+    <a href="https://www.google.com/" target="_blank">Google</a>
+  </nav>
+
+  <h1>Favorite AI Form</h1>
+
+  <form id="myForm" onsubmit="if(validateForm()) handleSubmit(event); return false;" onreset="handleReset();">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="options">Favorite AI:</label>
+      <select id="options" name="options" required>
+        <option value="Chat GPT">Chat GPT</option>
+        <option value="Microsoft Copilot">Microsoft Copilot</option>
+        <option value="Claude">Claude</option>
+        <option value="Grok">Grok</option>
+        <option value="Google Gemini">Google Gemini</option>
+        <option value="Other AI">Other AI</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label><b>How long have you been using AI for?</b></label>
+      <div class="radio-section">
+        <label><input type="radio" name="radioGroup" value="2020" required> 2020</label>
+        <label><input type="radio" name="radioGroup" value="2021-2022"> 2021-2022</label>
+        <label><input type="radio" name="radioGroup" value="2023-2024"> 2023-2024</label>
+        <label><input type="radio" name="radioGroup" value="2025+"> 2025+</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="comments">Comments:</label>
+      <textarea id="comments" name="comments" rows="4"></textarea>
+    </div>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <div class="footer">
+    <p>&copy; 2025 Anthony Towery. All rights reserved.</p>
+    <p>Connect with me on social media:</p>
+    <a href="https://x.com/Tony123Yt" target="_blank">Twitter</a> |
+    <a href="https://www.instagram.com/realtony123yt/" target="_blank">Instagram</a> |
+    <a href="https://github.com/ToweryA2704/" target="_blank">GitHub</a>
+  </div>
+</body>
+</html>

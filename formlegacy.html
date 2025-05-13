@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+This page was made with Microsoft Copilot
+I asked for a basic Form
+it looked great but it needed working reset and work submit buttons
+-->
+<html> 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite AI Form</title>
+ <h1><p style="text-align: center;">Favorite AI Form</p></h1></style>   
+ <nav>
+  <a href="indexlegacy.html">Home</a> |
+  <a href="tablelegacy.html">Table</a> |
+  <a href="formlegacy.html">Form</a> |
+  <a href="https://www.google.com/" target="_blank">Google</a>
+</nav>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            let form = document.getElementById('myForm');
+            let formData = new FormData(form);
+
+            // Print form fields just for demonstration
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+
+            alert("Form submitted!");
+        }
+
+        function handleReset() {
+            alert("Form reset!");
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            background-color: #aaf0d1;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: auto;
+        }
+        textarea {
+            background-color: #e0f7fa;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        input[type="reset"] {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm" onsubmit="handleSubmit(event); return false;" onreset="handleReset();">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="options">What is your favorite AI?:</label>
+        <select id="options" name="options" required>
+            <option value="option1">Chat GPT</option>
+            <option value="option2">Microsoft Copilot</option>
+            <option value="option3">Other AI</option>
+        </select><br><br>
+
+        <label>How long have you been using AI for?:</label><br>
+        <input type="radio" id="radio1" name="radioGroup" value="radio1" required>
+        <label for="radio1">2020</label><br>
+        <input type="radio" id="radio2" name="radioGroup" value="radio2">
+        <label for="radio2">2021-2022</label><br>
+		<input type="radio" id="radio3" name="radioGroup" value="radio2">
+        <label for="radio3">2023-2024</label><br>
+		<input type="radio" id="radio4" name="radioGroup" value="radio2">
+        <label for="radio4">2025+</label><br>
+        <label for="comments">Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</html>
